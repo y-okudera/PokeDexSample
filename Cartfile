@@ -1,0 +1,19 @@
+# carthage bootstrap --platform iOS --cache-builds
+# carthage update --platform iOS --cache-builds <new dependencies>
+
+## Rx
+github "ReactiveX/RxSwift"
+github "RxSwiftCommunity/Action" "master"
+github "cats-oss/Unio"
+
+## Network
+github "ishkawa/APIKit"
+
+## Storage
+github "radex/SwiftyUserDefaults"
+
+## Image Loader
+github "kean/Nuke"
+
+## UI
+github "AliSoftware/Reusable"

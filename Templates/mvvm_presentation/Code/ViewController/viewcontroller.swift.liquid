@@ -1,0 +1,53 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Reusable
+import RxCocoa
+import RxSwift
+import UIKit
+
+final class {{ module_info.name }}ViewController: UIViewController {
+
+    var viewModel: {{ module_info.name }}ViewModelType!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.bindInput()
+        self.bindOutput()
+    }
+}
+
+// MARK: - bind input
+extension {{ module_info.name }}ViewController {
+
+    private func bindInput() {
+        /*
+         *  EXAMPLE:
+         *
+         *  button.rx.tap
+         *      .bind(to: viewModel.input.buttonTap)
+         *      .disposed(by: disposeBag)
+         */
+    }
+}
+
+// MARK: - bind output
+extension {{ module_info.name }}ViewController {
+
+    private func bindOutput() {
+        /*
+         *  EXAMPLE:
+         *
+         *  viewModel.output.observable(for: \.isEnabled)
+         *      .bind(to: button.rx.isEnabled)
+         *      .disposed(by: disposeBag)
+         *
+         *  print("rawValue of isEnabled = \(output.value(for: \.isEnabled))")
+         */
+    }
+}

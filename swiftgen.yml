@@ -1,0 +1,12 @@
+strings:
+  inputs:
+    - Pokedex/Presentation/Resource/Strings/Localizable.strings
+  outputs:
+    - templateName: structured-swift5
+      output: Pokedex/Presentation/Resource/Strings/Generated/L10n-Constants.swift
+xcassets:
+  inputs:
+    - Pokedex/Presentation/Resource/Assets/Assets.xcassets
+  outputs:
+    - templateName: swift5
+      output: Pokedex/Presentation/Resource/Assets/Generated/Assets.swift

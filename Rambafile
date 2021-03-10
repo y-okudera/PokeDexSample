@@ -1,0 +1,34 @@
+### Headers settings
+company: and factory inc.
+
+### Xcode project settings
+project_name: Pokedex
+xcodeproj_path: Pokedex.xcodeproj
+
+### Code generation settings section
+# The main project target name
+project_target: Pokedex
+
+# The file path for new modules
+project_file_path: Pokedex/Presentation/Scene
+
+# The Xcode group path to new modules
+project_group_path: Pokedex/Presentation/Scene
+
+### Tests generation settings section
+# The tests target name
+test_target: PokedexTests
+
+# The file path for new tests
+test_file_path: PokedexTests/
+
+# The Xcode group path to new tests
+test_group_path: PokedexTests/
+
+### Dependencies settings section
+podfile_path: Podfile
+cartfile_pasth: Cartfile
+
+### Templates
+templates:
+- {name: mvvm_presentation, local: Templates}
