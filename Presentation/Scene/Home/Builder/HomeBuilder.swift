@@ -9,9 +9,9 @@
 import Domain
 import UIKit
 
-enum HomeBuilder {
+public enum HomeBuilder {
 
-    static func build() -> UIViewController {
+    public static func build() -> UIViewController {
         let viewController = HomeViewController.instantiate()
         let wireframe = HomeWireframeImpl()
 
