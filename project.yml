@@ -142,6 +142,7 @@ targets:
       - carthage: RxSwift
       - carthage: RxRelay
       - carthage: RxCocoa
+      - carthage: RxOptional
       - carthage: SwiftyUserDefaults
     # Info.plist
     info:
@@ -198,6 +199,7 @@ targets:
       - carthage: RxSwift
       - carthage: RxRelay
       - carthage: RxCocoa
+      - carthage: RxOptional
       - carthage: SwiftyUserDefaults
       - carthage: APIKit
     info:
@@ -236,6 +238,7 @@ targets:
       - carthage: RxSwift
       - carthage: RxRelay
       - carthage: RxCocoa
+      - carthage: RxOptional
       - carthage: SwiftyUserDefaults
     info:
       path: Domain/Resource/Generated/Info.plist
@@ -273,6 +276,7 @@ targets:
       - carthage: RxSwift
       - carthage: RxRelay
       - carthage: RxCocoa
+      - carthage: RxOptional
       - carthage: Action
       - carthage: Unio
       - carthage: SwiftyUserDefaults

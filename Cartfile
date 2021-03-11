@@ -4,6 +4,7 @@
 ## Rx
 github "ReactiveX/RxSwift"
 github "RxSwiftCommunity/Action" "master"
+gitHub "RxSwiftCommunity/RxOptional"
 github "cats-oss/Unio"
 
 ## Network
