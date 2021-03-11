@@ -27,13 +27,10 @@ final class HomeViewController: UIViewController {
 extension HomeViewController {
 
     private func bindInput() {
-        /*
-         *  EXAMPLE:
-         *
-         *  button.rx.tap
-         *      .bind(to: viewModel.input.buttonTap)
-         *      .disposed(by: disposeBag)
-         */
+        rx.viewWillAppear
+            .map { _ in }
+            .bind(to: viewModel.input.viewWillAppear)
+            .disposed(by: disposeBag)
     }
 }
 
@@ -41,14 +38,11 @@ extension HomeViewController {
 extension HomeViewController {
 
     private func bindOutput() {
-        /*
-         *  EXAMPLE:
-         *
-         *  viewModel.output.observable(for: \.isEnabled)
-         *      .bind(to: button.rx.isEnabled)
-         *      .disposed(by: disposeBag)
-         *
-         *  print("rawValue of isEnabled = \(output.value(for: \.isEnabled))")
-         */
+        viewModel.output.data
+            .filterNil()
+            .bind(onNext: {
+                print($0)
+            })
+            .disposed(by: disposeBag)
     }
 }

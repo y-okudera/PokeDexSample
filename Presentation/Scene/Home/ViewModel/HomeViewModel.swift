@@ -28,23 +28,15 @@ final class HomeViewModel: UnioStream<HomeViewModel>, HomeViewModelType {
 extension HomeViewModel {
 
     struct Input: InputType {
-
-        /*
-         *  EXAMPLE:
-         *
-         *  let buttonTap = PublishRelay<Void>()
-         */
+        let viewWillAppear = PublishRelay<Void>()
     }
 
     struct Output: OutputType {
-        /*
-         *  EXAMPLE:
-         *
-         *  let isEnabled: Observable<Bool>
-         */
+        let data: BehaviorRelay<PokemonListViewData?>
     }
 
     struct State: StateType {
+        let data = BehaviorRelay<PokemonListViewData?>(value: nil)
     }
 
     struct Extra: ExtraType {
@@ -60,21 +52,23 @@ extension HomeViewModel {
         let state = dependency.state
         let extra = dependency.extra
 
-        /*
-         *  EXAMPLE:
-         *
-         *  dependency.inputObservable(for: \.buttonTap)
-         *      .map { _ in false }
-         *      .bind(to: state.isEnabled)
-         *      .disposed(by: disposeBag)
-         */
+        let fetchPokemonList = Action<Void, PokemonListViewData> {
+            extra.useCase.getPokemonList()
+        }
+
+        dependency.inputObservables.viewWillAppear
+            .bind(onNext: {
+                fetchPokemonList.execute()
+            })
+            .disposed(by: disposeBag)
+
+        fetchPokemonList.elements
+            .bind(to: state.data)
+            .disposed(by: disposeBag)
+
 
         return Output(
-            /*
-             * EXAMPLE:
-             *
-             * isEnabled: state.isEnabled.asObservable()
-             */
+            data: state.data
         )
     }
 }
