@@ -16,7 +16,6 @@ bootstrap: ## Install ruby tools
 	brew update
 	brew install mint
 	mint bootstrap
-	sudo gem install bundler
 	bundle --path vendor/bundle --binstubs=vendor/bin
 	bundle install --path=vendor/bundle
 
@@ -35,10 +34,10 @@ open: ## Open Xcode workspace
 clean: ## Clean generated files
 	rm -rf $(project_name).xcodeproj
 	rm -rf $(project_name).xcworkspace
-	rm -rf $(project_name)/Presentaion/Asset/Generated/*
-	rm -rf $(project_name)/Application/Generated/*
-	echo rm -rf Carthage
-	echo rm -rf Pods
+	rm -rf ./**/Generated/*
+	rm -rf Carthage
+	rm -rf Pods
+	rm -rf ~/Library/Developer/Xcode/DerivedData/
 
 .PHONY: update
 update: ## Update tool versions
