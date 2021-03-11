@@ -1,5 +1,7 @@
 # Variables
-project_name=Pokedex ## xcodeproj filename
+
+## xcodeproj filename
+project_name=Pokedex
 
 .PHONY: help
 help: ## Show this usage
@@ -27,7 +29,7 @@ project: ## Generate Xcode project and workspace
 
 .PHONY: open
 open: ## Open Xcode workspace
-	open $(project_name).xcworkspace
+	open $(project_name).xcodeproj
 
 .PHONY: clean
 clean: ## Clean generated files

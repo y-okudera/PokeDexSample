@@ -130,25 +130,19 @@ targets:
           groups: [common_app, build_release, scheme_production, provi_production_debug]
         production-release: # 本番環境releaseビルド（App Storeリリース用）
           groups: [common_app, build_release, scheme_production, provi_production_release]
-    sources: [Pokedex]
+    sources:
+      - path: Pokedex
+        excludes:
+          - "**/.gitkeep"
+          - "**/*.md"
     dependencies:
       - target: Data
       - target: Domain
+      - target: Presentation
       - carthage: RxSwift
       - carthage: RxRelay
       - carthage: RxCocoa
-      - carthage: Action
-      - carthage: Unio
       - carthage: SwiftyUserDefaults
-      - carthage: Nuke
-      - carthage: Reusable
-    # SwiftGen
-    preBuildScripts:
-      - script: mint run SwiftGen swiftgen
-        name: SwiftGen
-        outputFiles:
-          - Pokedex/Presentation/Resource/Assets/Generated/Assets.swift
-          - Pokedex/Presentation/Resource/Strings/Generated/L10n-Constants.swift
     # Info.plist
     info:
       path: Pokedex/Application/Generated/Info.plist
@@ -195,7 +189,11 @@ targets:
           groups: [common_framework, build_production_framework, data_framework]
         production-release: # 本番環境releaseビルド（App Storeリリース用）
           groups: [common_framework, build_production_framework, data_framework]
-    sources: [Data]
+    sources:
+      - path: Data
+        excludes:
+          - "**/.gitkeep"
+          - "**/*.md"
     dependencies:
       - carthage: RxSwift
       - carthage: RxRelay
@@ -228,7 +226,11 @@ targets:
           groups: [common_framework, build_production_framework, domain_framework]
         production-release: # 本番環境releaseビルド（App Storeリリース用）
           groups: [common_framework, build_production_framework, domain_framework]
-    sources: [Domain]
+    sources:
+      - path: Domain
+        excludes:
+          - "**/.gitkeep"
+          - "**/*.md"
     dependencies:
       - target: Data
       - carthage: RxSwift
@@ -246,64 +248,72 @@ targets:
         CFBundlePackageType: $(PRODUCT_BUNDLE_PACKAGE_TYPE)
         CFBundleShortVersionString: "1.0"
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
-# ####################
-#   # Presentationフレームワーク
-#   Presentation:
-#     type: framework
-#     platform: iOS
-#     settings:
-#       configs:
-#         develop-debug: # dev環境debugビルド
-#           groups: [common_framework, build_dev_framework, presentation_framework]
-#         develop-release: # dev環境releaseビルド（Ad Hoc配信用）
-#           groups: [common_framework, build_dev_framework, presentation_framework]
-#         production-debug: # 本番環境debugビルド
-#           groups: [common_framework, build_production_framework, presentation_framework]
-#         production-release: # 本番環境releaseビルド（App Storeリリース用）
-#           groups: [common_framework, build_production_framework, presentation_framework]
-#     sources: [Presentation]
-#     dependencies:
-#       - target: Domain
-#       - carthage: RxSwift
-#       - carthage: RxRelay
-#       - carthage: RxCocoa
-#       - carthage: Unio
-#     info:
-#       path: Presentation/Resources/Generated/Info.plist
-#       properties:
-#         CFBundleDevelopmentRegion: $(DEVELOPMENT_LANGUAGE)
-#         CFBundleExecutable: $(EXECUTABLE_NAME)
-#         CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
-#         CFBundleInfoDictionaryVersion: "6.0"
-#         CFBundleName: $(PRODUCT_NAME)
-#         CFBundlePackageType: $(PRODUCT_BUNDLE_PACKAGE_TYPE)
-#         CFBundleShortVersionString: "1.0"
-#         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
-# ####################
-
-  # UnitTestターゲット
-  PokedexTests:
-    type: bundle.unit-test
+ ####################
+   # Presentationフレームワーク
+  Presentation:
+    type: framework
     platform: iOS
     settings:
-      ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: YES
-      BUNDLE_NAME: 'Pokedex.tests'
-    sources: PokedexTests
+      configs:
+        develop-debug: # dev環境debugビルド
+          groups: [common_framework, build_dev_framework, presentation_framework]
+        develop-release: # dev環境releaseビルド（Ad Hoc配信用）
+          groups: [common_framework, build_dev_framework, presentation_framework]
+        production-debug: # 本番環境debugビルド
+          groups: [common_framework, build_production_framework, presentation_framework]
+        production-release: # 本番環境releaseビルド（App Storeリリース用）
+          groups: [common_framework, build_production_framework, presentation_framework]
+    sources:
+      - path: Presentation
+        excludes:
+          - "**/.gitkeep"
+          - "**/*.md"
     dependencies:
-      - target: Pokedex
-#####################
-  # UITestターゲット
-  PokedexUITests:
-    type: bundle.ui-testing
-    platform: iOS
-    settings:
-      ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: YES
-      BUNDLE_NAME: 'Pokedex.uitests'
-    sources: PokedexUITests
-    dependencies:
-      - target: Pokedex
-
-#####################
+      - target: Domain
+      - carthage: RxSwift
+      - carthage: RxRelay
+      - carthage: RxCocoa
+      - carthage: Action
+      - carthage: Unio
+      - carthage: SwiftyUserDefaults
+      - carthage: Nuke
+      - carthage: Reusable
+    info:
+      path: Presentation/Resource/Generated/Info.plist
+      properties:
+        CFBundleDevelopmentRegion: $(DEVELOPMENT_LANGUAGE)
+        CFBundleExecutable: $(EXECUTABLE_NAME)
+        CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
+        CFBundleInfoDictionaryVersion: "6.0"
+        CFBundleName: $(PRODUCT_NAME)
+        CFBundlePackageType: $(PRODUCT_BUNDLE_PACKAGE_TYPE)
+        CFBundleShortVersionString: "1.0"
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+# ####################
+#
+#  # UnitTestターゲット
+#  PokedexTests:
+#    type: bundle.unit-test
+#    platform: iOS
+#    settings:
+#      ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: YES
+#      BUNDLE_NAME: 'Pokedex.tests'
+#    sources: PokedexTests
+#    dependencies:
+#      - target: Pokedex
+######################
+#  # UITestターゲット
+#  PokedexUITests:
+#    type: bundle.ui-testing
+#    platform: iOS
+#    settings:
+#      ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: YES
+#      BUNDLE_NAME: 'Pokedex.uitests'
+#    sources: PokedexUITests
+#    dependencies:
+#      - target: Pokedex
+#
+######################
 
 # スキーム定義
 schemeTemplates:
@@ -311,15 +321,15 @@ schemeTemplates:
     build:
       targets:
         Pokedex: all
-        PokedexTests: [test]
-        PokedexUITests: [test]
+#        PokedexTests: [test]
+#        PokedexUITests: [test]
     run:
       config: ${debugConfig}
     test:
       config: ${debugConfig}
-      targets:
-        - PokedexTests
-        - PokedexUITests
+#      targets:
+#        - PokedexTests
+#        - PokedexUITests
     profile:
       config: ${releaseConfig}
     analyze:

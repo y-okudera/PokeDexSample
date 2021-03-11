@@ -9,9 +9,9 @@
 import UIKit
 import Domain
 
-enum SplashBuilder {
+public enum SplashBuilder {
 
-    static func build() -> UIViewController {
+    public static func build() -> UIViewController {
         let viewController = SplashViewController.instantiate()
         let wireframe = SplashWireframeImpl()
 

@@ -10,10 +10,10 @@ xcodeproj_path: Pokedex.xcodeproj
 project_target: Pokedex
 
 # The file path for new modules
-project_file_path: Pokedex/Presentation/Scene
+project_file_path: Presentation/Scene
 
 # The Xcode group path to new modules
-project_group_path: Pokedex/Presentation/Scene
+project_group_path: Presentation/Scene
 
 ### Tests generation settings section
 # The tests target name
